@@ -24,6 +24,10 @@ When we obtained the public key, we can use it to verify the JWT signature. Weâ€
 ## Pre-requisites
 1. Download and install `ibmcloud cli` from https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases
 2. Install Cloud Functions plug-in `ibmcloud plugin install cloud-functions`. More details can be found [here](https://cloud.ibm.com/openwhisk/learn/cli)
+3. Target a namespace for your Cloud Function.     
+   - `ibmcloud login`
+   - `ibmcloud target --cf`
+   - `ibmcloud fn property set --namespace <namespace_name>`
 
 ## Create Cloud function action using CLI
 
