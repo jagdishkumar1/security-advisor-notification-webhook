@@ -1,0 +1,10 @@
+{
+  "GITHUB_ACCESS_TOKEN": "",
+  "accountId": "",
+  "apiKey": "",
+  "iamTokenURL": "https://iam.cloud.ibm.com/identity/token",
+  "notificationChannelUrl": "https://<region>.secadvisor.cloud.ibm.com/notifications",
+  "GITHUB_API_URL": "https://github.ibm.com/api/v3/repos/<Repo Owner>/<Repo Name>/issues",
+  "slackEndpoint": "",
+  "slackChannel": ""
+}

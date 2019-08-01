@@ -1,0 +1,16 @@
+{
+  "name": "security-advisor-notifier",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "deploy": "ibmcloud fn action update security-advisor-notifier dist/bundle.js --kind nodejs:10"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^4.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.8.1"
+  }
+}
