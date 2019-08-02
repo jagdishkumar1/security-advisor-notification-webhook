@@ -48,7 +48,7 @@ async function createGitHubIssue(finding, params) {
         var body = {
             title: `${finding["severity"]} severity finding reported by IBM Security Advisor`,
             body: issueDesc,
-            labels: ["ISL", "IBM Security Advisor"]
+            labels: ["IBM Security Advisor"]
         }
         
         const config = {
