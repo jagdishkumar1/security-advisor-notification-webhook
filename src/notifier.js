@@ -31,7 +31,7 @@ async function downloadPublicKey(accessToken, accountId, params) {
 
     const url = `${
       params.notificationChannelUrl
-    }/v1/${accountId}/download_public_key`;
+    }/v1/${accountId}/notifications/public_key`;
     const response = await axios.get(url, config);
     logger.info(`Downloaded public key for account ${accountId}`);
     return response.data.publicKey;
