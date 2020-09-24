@@ -17,6 +17,12 @@ If the finding received as part of notification signifies MEDIUM/HIGH severity, 
 **sendToSlack**: 
 If the finding received as part of notification signifies LOW severity, then this particular function will be called to send a Slack alert. This function builds message with necessary information (example: findings id, source etc) and post it to given Slack channel. Before we begin sent Slack alert, we will need a slack channel and a webhook url for the same. For more information, see this [link](https://api.slack.com/incoming-webhooks#create_a_webhook)
 
+**sendToEventstream**:
+All the findings that are received as part of this notification webhook will be put into a configured event stream (kafka) topic. This function will act as kafka producer.
+
+**sendToLogDNA**:
+All the findings that are received as part of this notification webhook will be send to a configured logDNA instance.
+
 **main**:
 IBM Cloud Functions requires a function called main to exist as an entry point for the action. The params object contains the body of the incoming request. Security Advisor notification body contains a single JSON object with a single property called **data** that holds the signed JWT string as its value.
 When we obtained the public key, we can use it to verify the JWT signature. We’ll use the jsonwebtoken library’s verify function. This function receives the JWT string and a public key and returns the payload decoded if the signature is valid. If not, it will throw an error.
@@ -45,6 +51,13 @@ When we obtained the public key, we can use it to verify the JWT signature. We�
    - **slackChannel** : Slack channel name
    - **GITHUB_ACCESS_TOKEN** : Developer access token generated using GitHub
    - **GITHUB_API_URL** : GitHub API url for your repo
+   - **logDNAEndpoint** : logDNA ingestion endpoint, example: https://logs.us-south.logging.cloud.ibm.com
+   - **logDNAIngestionKey** : logDNA ingestion key from logDNA instance UI.
+   - **kafkaMetadataBrokerList** : Kafka metadata broker list from Event stream instance service credentials.
+   - **kafkaSaslUsername** : Kafka user name from Event stream instance service credentials
+   - **kafkaSaslPassword** : kafka user password from Event stream instance service credentials
+   - **kafkaTopic** : Kafka topic name
+
 7. Bind parameters to your action.   
    - `ibmcloud fn action update security-advisor-notifier --param-file params.json`
    - Verify using `ibmcloud fn action get security-advisor-notifier parameters`

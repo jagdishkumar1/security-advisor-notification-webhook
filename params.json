@@ -6,5 +6,11 @@
   "notificationChannelUrl": "https://<region>.secadvisor.cloud.ibm.com/notifications",
   "GITHUB_API_URL": "https://github.ibm.com/api/v3/repos/<Repo Owner>/<Repo Name>/issues",
   "slackEndpoint": "",
-  "slackChannel": ""
+  "slackChannel": "",
+  "logDNAEndpoint": "",
+  "logDNAIngestionKey": "",
+  "kafkaMetadataBrokerList": "",
+  "kafkaSaslUsername": "",
+  "kafkaSaslPassword": "",
+  "kafkaTopic": ""
 }
