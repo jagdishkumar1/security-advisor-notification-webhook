@@ -4,8 +4,6 @@ var log4js = require("log4js");
 const date = require('date-and-time');
 var logger = log4js.getLogger('security-advisor-notification-webhook');
 logger.level = "info";
-const request = require("request");
-const path = require('path');
 
 const webhookInternalErrorResponse = { err: "WebHook Internal Error." };
 
@@ -273,32 +271,35 @@ async function main(params) {
     }
   }
 
-  try {
-    logger.info(
-      `Received a finding ${finding["id"]}. Sending to logDNA.`
-    );
-    await sendToLogDNA(finding, params);
-    logger.info(
-      `Successfully send finding ${finding["id"]} to logDNA.`
-    );
-  } catch (err) {
-    logger.error(`logDNA error : ${err}`);
-    return { err: "Couldn't send to logDNA" };
+  if (params.sendToLogDNA === "True") {
+    try {
+      logger.info(
+        `Received a finding ${finding["id"]}. Sending to logDNA.`
+      );
+      await sendToLogDNA(finding, params);
+      logger.info(
+        `Successfully send finding ${finding["id"]} to logDNA.`
+      );
+    } catch (err) {
+      logger.error(`logDNA error : ${err}`);
+      return { err: "Couldn't send to logDNA" };
+    }
   }
 
-  try {
-    logger.info(
-      `Received a finding ${finding["id"]}. Sending to Event stream.`
-    );
-    await sendToEventstream(finding, params);
-    logger.info(
-        `Successfully send finding ${finding["id"]} to Event stream.`
-    );
-  } catch (err) {
-    logger.error(`Eventstream error : ${err}`);
-    return { err: "Couldn't send to Eventstream" };
+  if (params.sendToEventstream === "True") {
+    try {
+      logger.info(
+        `Received a finding ${finding["id"]}. Sending to Event stream.`
+      );
+      await sendToEventstream(finding, params);
+      logger.info(
+          `Successfully send finding ${finding["id"]} to Event stream.`
+      );
+    } catch (err) {
+      logger.error(`Eventstream error : ${err}`);
+      return { err: "Couldn't send to Eventstream" };
+    }
   }
-
 }
 
 exports.main = main;

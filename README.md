@@ -51,8 +51,10 @@ When we obtained the public key, we can use it to verify the JWT signature. Weâ€
    - **slackChannel** : Slack channel name
    - **GITHUB_ACCESS_TOKEN** : Developer access token generated using GitHub
    - **GITHUB_API_URL** : GitHub API url for your repo
+   - **sendTologDNA** : True/False, If set to True will send the finding to configured logDNA instance.
    - **logDNAEndpoint** : logDNA ingestion endpoint, example: https://logs.us-south.logging.cloud.ibm.com
    - **logDNAIngestionKey** : logDNA ingestion key from logDNA instance UI.
+   - **sendToEventstream** : True/False, If set to True will send the finding to configured Eventstream instance.
    - **kafkaMetadataBrokerList** : Kafka metadata broker list from Event stream instance service credentials.
    - **kafkaSaslUsername** : Kafka user name from Event stream instance service credentials
    - **kafkaSaslPassword** : kafka user password from Event stream instance service credentials
