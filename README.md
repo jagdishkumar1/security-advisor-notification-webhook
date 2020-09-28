@@ -63,12 +63,3 @@ When we obtained the public key, we can use it to verify the JWT signature. We�
    - Verify using `ibmcloud fn action get security-advisor-notifier parameters`
 8. Get the URL endpoint for your action.
    - ```echo `ibmcloud fn action get security-advisor-notifier --url | grep 'https'`'.json'```
-
-
- ## Create Cloud function action using UI
-
- 1. To create a Cloud Function, go to the Functions from left nav bar in [IBM Cloud Dashboard](https://cloud.ibm.com/), select the Actions tab, click the Create button, and then click Create a new action. Give the action a name, chose the default package, select a Node.js runtime (the sample code in this repo `src/notifier.js` is compatible with Node.js 8), and click the Create button.
- 2. Copy the code from `src/notifier.js` to your Cloud Function.
- 3. Add required parameters mentioned in `params.json` by clicking `Parameters` from the left nav of the Cloud Functions UI.
- 4. Select `Endpoints` from the left nav of the Cloud Functions UI, check the Enable as Web Function checkbox, and click the Save button. Copy the URL that was added at the bottom of the Web Action section.
-  

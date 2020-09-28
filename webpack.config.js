@@ -5,5 +5,13 @@
      path: path.resolve(__dirname, 'dist'),
      filename: 'bundle.js'
    },
-   target: 'node'
+   target: 'node',
+   module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      }
+    ]
+  }
  };
