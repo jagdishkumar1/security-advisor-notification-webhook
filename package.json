@@ -6,7 +6,7 @@
     "deploy": "ibmcloud fn action update security-advisor-notifier dist/bundle.js --kind nodejs:10 --web true"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^4.4.0",
     "request": "^2.88.0"
